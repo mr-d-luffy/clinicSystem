@@ -1,0 +1,24 @@
+{
+    "company":"SiliconBrains",
+    "owner":"Mr.silicon",
+    "Email":"zoroxpro@proton.me",
+    "CEO":"Mr.cypher",
+    "CFO":"Mr.vilen",
+    "version":"2025.1",
+    "github":"https://github.com/mr-d-luffy/clinicSystem",
+    "path":[
+        "src/main.py",
+        "json/data.json",
+        "database/clinicSystem.db",
+        "assets/icon/icon.png",
+        "assets/sound/node.wav",
+        "qrcode/",
+        "document/pdf/"
+    ],
+    "modules":[
+        "clinic.py"
+    ],
+    "windowSize":["False", "True"],
+    "background":"black",
+    "gender":["male", "female", "other"]
+}

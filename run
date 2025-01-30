@@ -1,0 +1,8 @@
+#!/opt/homebrew/bin/python3
+
+from os import system
+
+x = True
+while(x):
+	system("./App.sh")
+	
