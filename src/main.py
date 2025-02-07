@@ -142,6 +142,7 @@ class main(customerIDWindow):
         bt2 = Button(text="print", fg="black", bg="white", command=documentPrint)
         bt2.place(x=200, y=200)
 
+        # Create id window onclicking this button Function
         def showDataByID():
             databaseApp = DatabaseWindow()
             databaseApp.databaseCustomerId()
@@ -156,6 +157,7 @@ class main(customerIDWindow):
         bt3 = Button(text="searchDataById", fg="black", bg="white", command=showDataByID)
         bt3.place(x=300, y=200)
 
+        # Create number window onclicking this button Function
         def showDataByNumber():
             databaseApp = DatabaseWindow()
             databaseApp.databaseCustomerNumber()
