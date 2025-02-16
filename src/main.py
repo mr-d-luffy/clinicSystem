@@ -115,19 +115,28 @@ class main(customerIDWindow):
 
         # this function for onclick event in windows (for submit a data in sqlite database)
         def update():
+            name = customerName.get()
+            age = customerage.get()
+            cusId = backend.createID() 
+            gender = selectMenu.get()
+            number = contactNumber.get()
+            test = customerTest.get()
+            fees = customerFees.get()
+
             data = {
-                "CustomerName":self.name,
-                "Customerself.age":self.age,
-                "CustomerId":self.cusId,
-                "Gender":self.gender,
-                "ConatactNumber":self.number,
-                "Test":self.test,
-                "Fees":self.fees   
+                "CustomerName":name,
+                "Customer age":age,
+                "CustomerId":cusId,
+                "Gender":gender,
+                "ConatactNumber":number,
+                "Test":test,
+                "Fees":fees   
             }
-            print(self.name, self.age, self.cusId, self.gender, self.number, self.test, self.fees)
-            backend.createQrcode(data, self.cusId) # this is for make qrcode in this path:qrcode/FileName.png
-            binaryImage = backend.imself.ageToBinary(self.cusId) # convert imself.age into binary format
-            backend.storeData(self.name, self.number, self.cusId, self.test, self.age, self.gender, self.fees, binaryImage) #store data in database using this funtion
+
+            print(name, age, cusId, gender, number, test, fees)
+            backend.createQrcode(data, cusId) # this is for make qrcode in this path:qrcode/FileName.png
+            binaryImage = backend.imageToBinary(cusId) # convert image into binary format
+            backend.storeData(name, number, cusId, test, age, gender, fees, binaryImage) #store data in database using this funtion
             backend.readDatabase() #reading the database using this function
             App.destroy()
 
@@ -135,7 +144,7 @@ class main(customerIDWindow):
         bt1 = Button(text="Submit", fg="black", bg="white", command=update)
         bt1.place(x=100, y=200)
 
-        def documentPrint():
+        def documentPrint(self):
             documentBackend.printDocument(self.name, self.age, self.gender, self.number, self.cusId, self.test, self.fees)
 
         # print PDF in document page

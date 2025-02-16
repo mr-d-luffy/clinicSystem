@@ -20,5 +20,9 @@
     ],
     "windowSize":["False", "True"],
     "background":"black",
-    "gender":["male", "female", "other"]
+    "gender":[
+        "male",
+        "female",
+        "other"
+    ]
 }

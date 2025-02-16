@@ -84,8 +84,8 @@ class clinic:
     def createQrcode(self, data, fileName):
         try:
             image = make(data)
-            image.save(f"{api["path"][5]} {fileName}.png")
-            Photo = Image.open(f"{api["path"][5]} {fileName}.png")
+            image.save(f"{api["path"][5]}{fileName}.png")
+            Photo = Image.open(f"{api["path"][5]}{fileName}.png")
             Photo.show() # open qrcode in new window using this function
         except(Exception) as e:
             print(Fore.RED, e, Fore.WHITE)
@@ -129,6 +129,6 @@ class clinicDocument(FPDF, clinic) :
 if __name__=="__main__":
     c = clinic("clinic")
     cd = clinicDocument()
-    # cd.printDocument("kali", 19, "male", 8788358100, "mkh98h9g0", "blood", 250)
+    
     
     
