@@ -2,7 +2,7 @@ from json import load
 from colorama import Fore
 from random import sample
 from datetime import datetime
-import pandas as pd
+from pandas import read_sql_query
 from qrcode import make
 from PIL import Image
 from fpdf import FPDF
@@ -26,7 +26,8 @@ class clinic:
             print(Fore.RED,f"Database already connected {e}",Fore.WHITE)
 
     # this function create 12 digit id for searsh in database
-    def createID(self):
+    @staticmethod
+    def createID():
         number = "1234567890"
         alpha = "abcdefghijklmnoqrstuvwxyz"
         all = number+alpha
@@ -75,13 +76,14 @@ class clinic:
     def readDatabase(self):
         try:
             query = f"SELECT * FROM {self.tableName}"
-            data = pd.read_sql_query(query, self.connection)
+            data = read_sql_query(query, self.connection)
             print(data)
         except(Exception) as e:
             print(Fore.RED, e, Fore.WHITE)
 
     #this function for create qrcode from the input data
-    def createQrcode(self, data, fileName):
+    @staticmethod
+    def createQrcode(data, fileName):
         try:
             image = make(data)
             image.save(f"{api["path"][5]}{fileName}.png")
@@ -91,7 +93,8 @@ class clinic:
             print(Fore.RED, e, Fore.WHITE)
 
     # Canvert image into binary Form to store in database
-    def imageToBinary(self, image):
+    @staticmethod
+    def imageToBinary(image):
         try:
             with open(f"{api["path"][5]}{image}.png", "rb") as File:
                 data = File.read()
