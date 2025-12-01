@@ -16,6 +16,11 @@ class clinic:
         self.connection = sqlite3.connect(api["path"][2])
         self.c = self.connection.cursor()
         self.tableName = tableName
+
+    # close database connetion by this funtion
+    def closeConnections(self):
+        if self.connection:
+            self.connection.close()
     
     # create table in database by this function
     def createDatabase(self):
@@ -46,10 +51,10 @@ class clinic:
     # show data from database by id using this function
     def showDataById(self, customerID):
         try:
-            self.c.execute(f"SELCET * FROM {self.tableName} where customerID={customerID}")
+            self.c.execute(f"SELECT * FROM {self.tableName} where customerID={customerID}")
             self.c.fetchall()
             self.connection.commit()
-            self.connection.close()
+            self.closeConnections()
         except(sqlite3.Error) as e:
             print(Fore.RED,e,Fore.WHITE)
 
@@ -59,16 +64,16 @@ class clinic:
             self.c.execute(f"SELECT * FROM {self.tableName} where contactNumber={contactNumber}")
             self.c.fetchall()
             self.connection.commit()
-            self.connection.close()
+            self.closeConnections()
         except(sqlite3.Error) as e:
             print(Fore.RED,e,Fore.WHITE)
 
     # delete data from database using this function
     def deleteDataById(self, customerID):
         try:
-            self.c.execute(f"DELETE * FROM {self.tableName} WHERE customerID={customerID} ")
+            self.c.execute(f"DELETE FROM {self.tableName} WHERE customerID={customerID} ")
             self.connection.commit()
-            self.connection.close()
+            self.closeConnections()
         except(sqlite3.Error) as e:
             print(Fore.RED,e,Fore.WHITE)
 
